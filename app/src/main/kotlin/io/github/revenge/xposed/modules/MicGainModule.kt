@@ -55,10 +55,11 @@ object MicGainModule : Module() {
     private var procSampleRate = 0
     private var procChannels = 0
 
-    override fun onLoad(packageParam: XC_LoadPackage.LoadPackageParam) = with(packageParam) {
+    override fun onLoad(packageParam: XC_LoadPackage.LoadPackageParam) {
         Log.i("KadonMod: loading, hooking AudioRecord.read")
 
-        val audioRecordClass = classLoader.safeLoadClass("android.media.AudioRecord")
+        val cl = packageParam.classLoader
+        val audioRecordClass = cl.safeLoadClass("android.media.AudioRecord")
             ?: run { Log.e("KadonMod: AudioRecord class not found"); return }
 
         // Hook the class-level method so it survives reconnect/region change
