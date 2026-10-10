@@ -9,6 +9,7 @@ import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 import io.github.revenge.xposed.Utils.Log
 import io.github.revenge.xposed.modules.*
+import io.github.revenge.xposed.modules.MicGainModule
 import io.github.revenge.xposed.modules.appearance.FontsModule
 import io.github.revenge.xposed.modules.appearance.SysColorsModule
 import io.github.revenge.xposed.modules.appearance.ThemesModule
@@ -48,7 +49,8 @@ class Main : Module(), IXposedHookLoadPackage, IXposedHookZygoteInit {
         CacheModule,
         FontsModule,
         ThemesModule,
-        SysColorsModule
+        SysColorsModule,
+        MicGainModule
     )
 
     init {
